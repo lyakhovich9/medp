@@ -17,7 +17,7 @@ use Yii;
  * @property Reception[] $receptions
  * @property Role $role
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -76,5 +76,56 @@ class User extends \yii\db\ActiveRecord
     public function getRole()
     {
         return $this->hasOne(Role::class, ['id' => 'role_id']);
+    }
+
+    public static function vhod($tel,$password){
+        $user = static::find()->where(['Tel' => $tel])->one();
+        if ($user && $user->validatePassword($password)) {
+            return $user;
+        }
+        return null;
+    }
+
+    public function validatePassword($password){
+        return $this->password === $password;
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public static function findIdentity($id)
+    {
+        return static::find()->where(['id'=>$id])->one();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAuthKey()
+    {
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validateAuthKey($authKey)
+    {
+        return null;
     }
 }
