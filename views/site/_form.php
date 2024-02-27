@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'password_confirmation')->passwordInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'date_of_birth')->textInput() ?>
 
     <?= $form->field($model, 'tel')->textInput(['maxlength' => true]) ?>
