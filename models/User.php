@@ -129,4 +129,16 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return null;
     }
+
+    public function isAdmin() {
+        return $this->role_id == Role::ADMIN_ROLE_ID;
+    }
+
+    /**
+     * @return User|null
+     */
+    
+    public static function getInstance() {
+        return Yii::$app->user->identity;
+    }
 }
