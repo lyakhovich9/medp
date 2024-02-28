@@ -50,10 +50,11 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => 'ID',
-            'fio' => 'Fio',
-            'password' => 'Password',
-            'date_of_birth' => 'Date Of Birth',
-            'tel' => 'Tel',
+            'fio' => 'ФИО',
+            'password' => 'Пароль',
+            'password_confirmation' => 'Повторите пароль',
+            'date_of_birth' => 'Дата рождения',
+            'tel' => 'Телефон',
             'role_id' => 'Role ID',
         ];
     }
