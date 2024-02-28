@@ -50,9 +50,9 @@ class Reception extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'patient_fio' => 'Patient Fio',
-            'date_of_reception' => 'Date Of Reception',
-            'description' => 'Description',
+            'patient_fio' => 'ФИО пациента',
+            'date_of_reception' => 'Дата приема',
+            'description' => 'Описание',
             'user_id' => 'User ID',
             'status_id' => 'Status ID',
         ];
