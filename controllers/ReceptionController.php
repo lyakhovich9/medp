@@ -94,13 +94,13 @@ class ReceptionController extends Controller
                 $model->user_id = $user->id;
                 $model->status_id = Status::NEW_STATUS_ID;
                 if ($model->save()) {
-                    return $this->redirect(['index']);
+                    return $this->redirect(['/reception/index']);
                 }
             }
         } else {
             $model->loadDefaultValues();
         }
-        return $this->render('create', [
+        return $this->render('/reception/create', [
             'model' => $model,
         ]);
     }
