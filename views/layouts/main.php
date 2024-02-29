@@ -32,20 +32,20 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'Мед Плюс',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
     ]);
 
     $items = [
         ['label' => 'Главная', 'url' => ['site/index']],
-        ['label' => 'Мои записи', 'url' => ['reception/index']],
-        ['label' => 'Запись на прием', 'url' => ['/reception/create']], 
     ];
         if (Yii::$app->user->isGuest) {
             $items[] = ['label' => 'Вход', 'url' => ['/site/login']];
             $items[] = ['label' => 'Регистрация', 'url' => ['/site/register']];
         } else {
+            $items[] = ['label' => 'Мои записи', 'url' => ['reception/index']];
+            $items[] = ['label' => 'Запись на прием', 'url' => ['/reception/create']];
             $items[] = '<li class="nav-item">'
                 . Html::beginForm(['/site/logout'])
                 . Html::submitButton(
@@ -78,8 +78,36 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <footer id="footer" class="mt-auto py-3 bg-light">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
+            <div class="col-md-6 text-center text-md-start">
+                <?php if (Yii::$app->user->isGuest): ?>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= Yii::$app->urlManager->createUrl(['/site/index']) ?>">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= Yii::$app->urlManager->createUrl(['/site/login']) ?>">Авторизация</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= Yii::$app->urlManager->createUrl(['/site/register']) ?>">Регистрация</a>
+                        </li>
+                    </ul>
+                    <?php else:?>
+                        <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= Yii::$app->urlManager->createUrl(['/reception/index']) ?>">Мои записи</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= Yii::$app->urlManager->createUrl(['/reception/create']) ?>">Запись на прием</a>
+                        </li>
+                    </ul>
+                    <?php endif; ?>
+            </div>
+
+            <div class="col-md-6 text-center text-md-end">
+                <h4>Контактная информация</h4>
+                <p>Телефон: +7 (999) 888 33-22</p>
+                <p>Email: med-plus@mail.ru</p>
+            </div>
         </div>
     </div>
 </footer>
