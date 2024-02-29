@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Reception', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Сохранить', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'patient fio',
-            'date of reception',
+            'patient_fio',
+            'date_of_reception',
             'description',
             'user',
             [

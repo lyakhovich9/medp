@@ -10,16 +10,12 @@ use yii\grid\GridView;
 /** @var app\models\ReceptionSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Receptions';
+$this->title = 'Мои записи';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="reception-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Reception', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -29,18 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'patient_fio',
             'date_of_reception',
             'description:ntext',
-            'user_id',
             //'status_id',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Reception $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
+        
         ],
     ]); ?>
 

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Reception $model */
 
-$this->title = 'Create Reception';
+$this->title = 'Запись на прием';
 $this->params['breadcrumbs'][] = ['label' => 'Receptions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

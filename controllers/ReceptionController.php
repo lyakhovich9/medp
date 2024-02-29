@@ -94,7 +94,8 @@ class ReceptionController extends Controller
                 $model->user_id = $user->id;
                 $model->status_id = Status::NEW_STATUS_ID;
                 if ($model->save()) {
-                return $this->redirect(['index']);
+                    return $this->redirect(['index']);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -102,7 +103,7 @@ class ReceptionController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
-    }}
+    }
 
     /**
      * Updates an existing Reception model.
@@ -120,7 +121,7 @@ class ReceptionController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['index_admin']);
         }
 
         return $this->render('update', [

@@ -53,8 +53,6 @@ class Reception extends \yii\db\ActiveRecord
             'patient_fio' => 'ФИО пациента',
             'date_of_reception' => 'Дата приема',
             'description' => 'Описание',
-            'user_id' => 'User ID',
-            'status_id' => 'Status ID',
         ];
     }
 

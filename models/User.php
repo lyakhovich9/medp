@@ -27,6 +27,11 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return 'user';
     }
 
+    public function __toString()
+    {
+        return $this->fio;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -37,8 +42,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             [['date_of_birth'], 'safe'],
             [['role_id'], 'integer'],
             [['fio'], 'string', 'max' => 511],
-            [['password', 'tel'], 'string', 'max' => 255],
-            [['tel'], 'unique'],
+            [['password', 'tel'], 'string','max' => 255],
+            [['password'], 'match', 'pattern' => '/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/', 'message'=>'Пароль должен содержать содержать хотя бы одну цифру, латинскую букву и быть длиннее 8-ми символов'],
+            [['tel'], 'unique', 'message' =>'Номер телефона уже зарегистрирован'],
             [['role_id'], 'exist', 'skipOnError' => true, 'targetClass' => Role::class, 'targetAttribute' => ['role_id' => 'id']],
         ];
     }
@@ -137,7 +143,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     /**
      * @return User|null
      */
-    
+
     public static function getInstance() {
         return Yii::$app->user->identity;
     }
