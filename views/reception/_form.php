@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'patient_fio')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'date_of_reception')->textInput() ?>
+    <?= $form->field($model, 'date_of_reception')->textInput(['type' => 'date']) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
