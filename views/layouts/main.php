@@ -18,6 +18,8 @@ $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, 
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
+//СОЗДАНИЕ ЛОГО
+$logo = Html::img('@web/images/logo.svg', ['alt' => 'Логотип', 'class' => 'navbar-brand logo']);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -38,6 +40,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     ]);
 
     $items = [
+        ['label' => $logo, 'url' => ['site/index'], 'encode' => false],
         ['label' => 'Главная', 'url' => ['site/index']],
     ];
         if (Yii::$app->user->isGuest) {
@@ -58,7 +61,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         }
     
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
+        'options' => ['class' => 'navbar-nav align-items-center'],
         'items' => $items
     ]);
     NavBar::end();
@@ -80,7 +83,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <div class="row text-muted">
             <div class="col-md-6 text-center text-md-start">
                 <?php if (Yii::$app->user->isGuest): ?>
-                    <ul class="nav">
+                    <ul class="nav ">
                         <li class="nav-item">
                             <a class="nav-link" href="<?= Yii::$app->urlManager->createUrl(['/site/index']) ?>">Главная</a>
                         </li>
